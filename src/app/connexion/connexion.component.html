@@ -1,9 +1,9 @@
-<form>
+<form #myform="ngForm"> <!-- # pour le nom de validation-->
 <table>
 <tr><td colSpan="2"><h1>Connexion</h1></td></tr>
-<tr><td >Email</td><input [(ngModel)]="user.email" type="email" name="mail"><td></td></tr>
-<tr><td >Mot de passe:</td><input type="password" name="mdp"><td></td></tr>
-<tr><td colSpan="2"><input type="button" value="se connecter"><br>
+<tr><td >Email</td><input [(ngModel)]="user.email" required type="email" name="mail"><td></td></tr>
+<tr><td >Mot de passe:</td><input type="password" required [(ngModel)]="user.mdp" name="mdp"><td></td></tr>
+<tr><td colSpan="2"><input  type="button" value="se connecter"><br>
 <a href="inscription">S'inscrire</a>
 
 </td></tr>
