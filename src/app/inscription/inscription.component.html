@@ -1,1 +1,32 @@
-<p>inscription works!</p>
+<form #myform="ngForm"> <!-- # pour le nom de validation-->
+    <table>
+    <tr><td colSpan="2"><h1>Inscription</h1></td></tr>
+    <tr><td >Nom</td><input class="form-control" #cnom="ngModel" [(ngModel)]="user.nom" pattern="[A-Za-z 'éè]{3,30}" required type="text" name="n"><td></td></tr><!-- ngModel pour la valeur-->
+    <tr><td >Prenom</td><input class="form-control" #cprenom="ngModel" pattern="[A-Za-z 'éè]{3,30}" [(ngModel)]="user.prenom" required type="text" name="p"><td></td></tr><!-- ngModel pour la valeur-->
+    <tr><td >Age</td><input class="form-control" #cage="ngModel" [(ngModel)]="user.age" required type="number" min="12" name="a"><td></td></tr><!-- ngModel pour la valeur-->
+    <tr><td >Email</td><input class="form-control" #cmail="ngModel" [(ngModel)]="user.email" required type="email" name="mail"><td></td></tr><!-- ngModel pour la valeur-->
+    <tr><td >Mot de passe:</td><input class="form-control" #cpass="ngModel" type="password" required [(ngModel)]="user.mdp" name="mdp"><td></td></tr>
+    <tr><td colSpan="2"><input [disabled]="myform.invalid" class="btn btn-primary"  type="button" value="se connecter"><br><!-- [] pour confirmer un etat-->
+    <a href="">Se connecter</a>
+    
+    </td></tr>
+    
+    
+    </table>
+    
+    
+    </form>
+    <div *ngIf="cnom.invalid && (cnom.dirty || cnom.touched)" class="alert alert-danger">
+<div *ngIf="cnom.errors.required">
+nom obligatoire.
+</div>
+<div *ngIf="cnom.errors.pattern">
+    le nom ne peux contenir que des lettres et des espaces
+    </div></div>
+    <div *ngIf="cprenom.invalid && (cprenom.dirty || cprenom.touched)" class="alert alert-danger">
+<div *ngIf="cprenom.errors.required">
+prénom obligatoire.
+</div>
+<div *ngIf="cprenom.errors.pattern">
+    le prénom ne peux contenir que des lettres et des espaces
+    </div></div>
